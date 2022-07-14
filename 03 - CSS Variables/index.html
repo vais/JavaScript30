@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      body {
+        background-color: #193549;
+        color: white;
+        text-align: center;
+        font-family: "helvetica neue", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 100;
+      }
+
+      img {
+        padding: var(--padding);
+        background-color: var(--color);
+        filter: blur(var(--blur));
+      }
+
+      .highlight {
+        color: var(--color);
+      }
+
+      .controls,
+      .controls > label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .controls {
+        gap: 48px;
+        margin-bottom: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Update CSS Variables with <span class="highlight">JS</span></h1>
+
+    <div class="controls">
+      <label
+        >Padding: <input name="padding" type="range" data-units="px" value="10"
+      /></label>
+
+      <label
+        >Blur: <input name="blur" type="range" data-units="px" value="10"
+      /></label>
+
+      <label>Color: <input name="color" type="color" value="#f5be44" /></label>
+    </div>
+
+    <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="" />
+
+    <script>
+      const sync = (input) => {
+        const units = input.dataset.units || "";
+        document.documentElement.style.setProperty(
+          `--${input.name}`,
+          input.value + units
+        );
+      };
+
+      document.querySelectorAll(".controls input").forEach((input) => {
+        input.addEventListener("change", (e) => sync(e.currentTarget));
+        input.addEventListener("mousemove", (e) => sync(e.currentTarget));
+        sync(input);
+      });
+    </script>
+  </body>
+</html>
