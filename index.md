@@ -5,3 +5,4 @@
 3. [CSS Variables](https://vais.github.io/JavaScript30/03 - CSS Variables/index.html)
 4. [Array Cardio Day 1](https://vais.github.io/JavaScript30/04 - Array Cardio Day 1/index.html)
 5. [Flex Panel Gallery](https://vais.github.io/JavaScript30/05 - Flex Panel Gallery/index.html)
+6. [Type Ahead](https://vais.github.io/JavaScript30/06 - Type Ahead/index.html)

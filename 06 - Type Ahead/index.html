@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #ffc600;
+        font-family: Arial, sans-serif;
+      }
+      form {
+        width: 420px;
+        margin: 50px auto;
+      }
+      input {
+        width: 100%;
+        font-size: 2rem;
+        padding: 20px 10px;
+        border: solid #fafafa 10px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgb(0 0 0 / 25%), inset 0 0 2px rgb(0 0 0 / 20%);
+        outline: 0;
+      }
+      ul {
+        width: calc(100% - 20px);
+        list-style-type: none;
+        margin: -4px 10px 0 10px;
+        padding: 4px 0 0 0;
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgb(0 0 0 / 25%);
+      }
+      li {
+        color: #555;
+        font-size: 1rem;
+        padding: 10px;
+        border-bottom: dotted #dadada 1px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      li:last-of-type {
+        border: 0;
+      }
+      li > span:last-of-type {
+        color: #bababa;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" placeholder="City or State" autofocus />
+      <ul></ul>
+    </form>
+
+    <script>
+      let cities = [];
+
+      const endpoint =
+        "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+
+      fetch(endpoint)
+        .then((res) => res.json())
+        .then((json) => {
+          cities = json;
+        });
+
+      const ul = document.querySelector("ul");
+      const input = document.querySelector("input");
+      const numberFormatter = new Intl.NumberFormat();
+
+      const showSuggestions = () => {
+        if (!input.value) {
+          ul.innerHTML = "";
+          return;
+        }
+
+        const regex = new RegExp(input.value, "gi");
+
+        ul.innerHTML = cities
+          .filter(({ city, state }) => regex.test(city) || regex.test(state))
+          .map(
+            ({ city, state, population }) => `
+              <li>
+                <span>
+                  ${city.replace(regex, "<mark>$&</mark>")},
+                  ${state.replace(regex, "<mark>$&</mark>")}
+                </span>
+                <span>${numberFormatter.format(population)}</span>
+              </li>
+            `
+          )
+          .join("");
+      };
+
+      input.addEventListener("keyup", showSuggestions);
+      input.addEventListener("change", showSuggestions);
+
+      document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
