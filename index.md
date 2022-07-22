@@ -6,3 +6,4 @@
 4. [Array Cardio Day 1](https://vais.github.io/JavaScript30/04 - Array Cardio Day 1/index.html)
 5. [Flex Panel Gallery](https://vais.github.io/JavaScript30/05 - Flex Panel Gallery/index.html)
 6. [Type Ahead](https://vais.github.io/JavaScript30/06 - Type Ahead/index.html)
+7. [Array Cardio Day 2](https://vais.github.io/JavaScript30/07 - Array Cardio Day 2/index.html)
