@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <p onclick="makeGreen()">whatevs</p>
+    <script>
+      (async () => {
+        function makeGreen() {
+          const p = document.querySelector("p");
+          p.style.color = "green";
+          p.style.fontSize = "50px";
+        }
+
+        const dogs = [
+          { name: "Snickers", age: 2 },
+          { name: "hugo", age: 8 },
+        ];
+
+        // Regular
+        console.log("hello");
+
+        // Interpolated
+        console.log(
+          "hello, it's %s right now",
+          new Date().toLocaleTimeString()
+        );
+
+        // Styled
+        console.log("%chello", "color: yellow; background-color: red;");
+
+        // warning!
+        console.warn("low oxygen");
+
+        // Error :|
+        console.error("out of oxygen");
+
+        // Info
+        console.info("oxygen levels restored");
+
+        // Testing
+        console.assert(1 === 2, "one must equal two!");
+
+        // clearing
+        // console.clear();
+
+        // Viewing DOM Elements
+        console.log(document.querySelector("p"));
+        console.dir(document.querySelector("p"));
+
+        // Grouping together
+        dogs.forEach(({ name, age }) => {
+          console.groupCollapsed(name);
+          console.log(age);
+          console.groupEnd(name);
+        });
+
+        // counting
+        console.count("hi");
+        console.count("hi");
+        console.count("hi");
+
+        // timing
+        console.time("fetching");
+        const res = await fetch("https://api.github.com/users/vais");
+        const json = await res.json();
+        console.log(json);
+        console.timeEnd("fetching");
+      })();
+    </script>
+  </body>
+</html>
