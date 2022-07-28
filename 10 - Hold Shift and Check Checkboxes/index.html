@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      body {
+        background-color: #3c3c3c;
+      }
+
+      div {
+        background-color: white;
+        max-width: 400px;
+        margin: 50px auto;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
+        border-radius: 5px;
+      }
+
+      label {
+        --spacing: 20px;
+        --border: solid #d1e2ff 1px;
+        display: flex;
+        user-select: none;
+        padding-left: var(--spacing);
+        gap: var(--spacing);
+        border-bottom: var(--border);
+      }
+
+      label:last-of-type {
+        border: 0;
+      }
+
+      input + span {
+        font-family: "helvetica neue", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 200;
+        border-left: var(--border);
+        padding: var(--spacing);
+      }
+
+      input:checked + span {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label><input type="checkbox" /><span>to do item 1</span></label>
+      <label><input type="checkbox" /><span>to do item 2</span></label>
+      <label><input type="checkbox" /><span>to do item 3</span></label>
+      <label><input type="checkbox" /><span>to do item 4</span></label>
+      <label><input type="checkbox" /><span>to do item 5</span></label>
+      <label><input type="checkbox" /><span>to do item 6</span></label>
+      <label><input type="checkbox" /><span>to do item 7</span></label>
+      <label><input type="checkbox" /><span>to do item 8</span></label>
+      <label><input type="checkbox" /><span>to do item 9</span></label>
+    </div>
+    <script>
+      const checkboxes = document.querySelectorAll("input");
+
+      let lastTarget;
+
+      const handleClick = ({ shiftKey, currentTarget }) => {
+        if (lastTarget && !lastTarget.checked) {
+          lastTarget = null;
+        }
+
+        if (!currentTarget.checked) {
+          return;
+        }
+
+        if (!lastTarget || !shiftKey) {
+          lastTarget = currentTarget;
+          return;
+        }
+
+        let inRange = false;
+
+        checkboxes.forEach((checkbox) => {
+          if (checkbox === lastTarget || checkbox === currentTarget) {
+            inRange = !inRange;
+          }
+
+          if (inRange) {
+            checkbox.checked = true;
+          }
+        });
+
+        lastTarget = currentTarget;
+      };
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("click", handleClick);
+      });
+    </script>
+  </body>
+</html>

@@ -9,3 +9,4 @@
 7. [Array Cardio Day 2](https://vais.github.io/JavaScript30/07 - Array Cardio Day 2/index.html)
 8. [Fun with HTML5 Canvas](https://vais.github.io/JavaScript30/08 - Fun with HTML5 Canvas/index.html)
 9. [Dev Tools Domination](https://vais.github.io/JavaScript30/09 - Dev Tools Domination/index.html)
+10. [Hold Shift and Check Checkboxes](https://vais.github.io/JavaScript30/10 - Hold Shift and Check Checkboxes/index.html)
