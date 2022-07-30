@@ -10,3 +10,4 @@
 8. [Fun with HTML5 Canvas](https://vais.github.io/JavaScript30/08 - Fun with HTML5 Canvas/index.html)
 9. [Dev Tools Domination](https://vais.github.io/JavaScript30/09 - Dev Tools Domination/index.html)
 10. [Hold Shift and Check Checkboxes](https://vais.github.io/JavaScript30/10 - Hold Shift and Check Checkboxes/index.html)
+11. [Custom Video Player](https://vais.github.io/JavaScript30/11 - Custom Video Player/index.html)
