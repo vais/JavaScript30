@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script
+      type="text/javascript"
+      src="https://www.cornify.com/js/cornify.js"
+    ></script>
+    <title></title>
+  </head>
+  <body>
+    <script>
+      const sequence = "vais";
+      let buffer = "";
+
+      document.addEventListener("keyup", ({ key }) => {
+        const subsequence = buffer + key;
+        buffer = sequence.startsWith(subsequence) ? subsequence : "";
+        if (buffer === sequence) {
+          buffer = "";
+          cornify_add();
+        }
+      });
+    </script>
+  </body>
+</html>
