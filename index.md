@@ -12,3 +12,4 @@
 10. [Hold Shift and Check Checkboxes](https://vais.github.io/JavaScript30/10 - Hold Shift and Check Checkboxes/index.html)
 11. [Custom Video Player](https://vais.github.io/JavaScript30/11 - Custom Video Player/index.html)
 12. [Key Sequence Detection](https://vais.github.io/JavaScript30/12 - Key Sequence Detection/index.html)
+13. [Slide in on Scroll](https://vais.github.io/JavaScript30/13 - Slide in on Scroll/index.html)
