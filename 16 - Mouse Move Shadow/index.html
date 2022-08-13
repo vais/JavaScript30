@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        display: grid;
+        place-items: center;
+      }
+      div {
+        text-transform: uppercase;
+        font-size: 5rem;
+        font-family: sans-serif;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div contenteditable="true">🔥funk</div>
+    <script>
+      const rom = 300;
+      const div = document.querySelector("div");
+
+      window.addEventListener("mousemove", ({ x, y }) => {
+        x = (x / window.innerWidth) * rom - rom / 2;
+        y = (y / window.innerHeight) * rom - rom / 2;
+
+        div.style.textShadow = `
+          ${x}px  ${y}px  0 hsl(${x + y}deg 100% 50%),
+          ${-x}px ${y}px  0 hsl(${x - y}deg 100% 50%),
+          ${y}px  ${-x}px 0 hsl(${y - x}deg 100% 50%),
+          ${-y}px ${x}px  0 hsl(${x + y}deg 100% 50%)
+        `;
+      });
+    </script>
+  </body>
+</html>
