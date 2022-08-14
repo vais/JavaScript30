@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      body {
+        margin: 0;
+        background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+        background-size: cover;
+        font-family: sans-serif;
+      }
+      ul {
+        list-style: inside square;
+        font-size: 1.3rem;
+        background-color: white;
+        width: 500px;
+        margin: auto;
+        padding: 0;
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+      }
+      li {
+        padding: 20px;
+        border-top: solid #eee 1px;
+      }
+      li:first-child {
+        border-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <ul></ul>
+    <script>
+      const bands = [
+        "The Plot in You",
+        "The Devil Wears Prada",
+        "Pierce the Veil",
+        "Norma Jean",
+        "The Bled",
+        "Say Anything",
+        "The Midway State",
+        "We Came as Romans",
+        "Counterparts",
+        "Oh, Sleeper",
+        "A Skylit Drive",
+        "Anywhere But Here",
+        "An Old Dog",
+      ];
+
+      const strip = (string) => string.replace(/^(the|an?)\s+/i, "");
+
+      document.querySelector("ul").innerHTML = `<li>${bands
+        .sort((a, b) => strip(a).localeCompare(strip(b)))
+        .join("</li><li>")}</li>`;
+    </script>
+  </body>
+</html>
