@@ -18,3 +18,6 @@
 16. [Mouse Move Shadow](https://vais.github.io/JavaScript30/16 - Mouse Move Shadow/index.html)
 17. [Sort Without Articles](https://vais.github.io/JavaScript30/17 - Sort Without Articles/index.html)
 18. [Adding Up Times with Reduce](https://vais.github.io/JavaScript30/18 - Adding Up Times with Reduce/index.html)
+19. Webcam Fun (╯°□°)╯︵ ┻━┻
+20. Speech Detection (╯°□°)╯︵ ┻━┻
+21. Geolocation (╯°□°)╯︵ ┻━┻
