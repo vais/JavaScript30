@@ -21,3 +21,4 @@
 19. Webcam Fun (╯°□°)╯︵ ┻━┻
 20. Speech Detection (╯°□°)╯︵ ┻━┻
 21. Geolocation (╯°□°)╯︵ ┻━┻
+22. [Follow Along Link Highlighter](https://vais.github.io/JavaScript30/22 - Follow Along Link Highlighter/index.html)
