@@ -23,3 +23,4 @@
 21. Geolocation (╯°□°)╯︵ ┻━┻
 22. [Follow Along Link Highlighter](https://vais.github.io/JavaScript30/22 - Follow Along Link Highlighter/index.html)
 23. [Speech Synthesis](https://vais.github.io/JavaScript30/23 - Speech Synthesis/index.html)
+24. [Sticky Nav](https://vais.github.io/JavaScript30/24 - Sticky Nav/index.html)
