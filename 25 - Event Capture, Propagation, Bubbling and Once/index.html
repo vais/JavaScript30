@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      div {
+        height: 100%;
+        padding: 50px;
+      }
+      div.one {
+        background-color: #555;
+      }
+      div.two {
+        background-color: #888;
+      }
+      div.three {
+        background-color: #cacaca;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="one">
+      <div class="two">
+        <div class="three"></div>
+      </div>
+    </div>
+    <script>
+      function handleClick(e) {
+        console.log(e.currentTarget);
+        e.stopPropagation();
+      }
+
+      document.querySelectorAll("div").forEach((div) => {
+        div.addEventListener("click", handleClick, {
+          capture: true,
+        });
+      });
+    </script>
+  </body>
+</html>
