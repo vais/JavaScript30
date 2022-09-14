@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background-image: url(https://source.unsplash.com/NFs6dRTBgaM/2000x2000);
+        background-size: cover;
+      }
+
+      .items {
+        --padding: 50px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        overflow: auto;
+        border: solid white 1px;
+        padding: var(--padding);
+        background-color: rgba(0, 0, 0, 0.15);
+        perspective: 800px;
+        transform: scale(0.98);
+        will-change: transform;
+        cursor: pointer;
+        transition: all 300ms;
+        user-select: none;
+      }
+
+      .items.active {
+        cursor: grab;
+        transform: scale(1);
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .item {
+        --scale: 1.42;
+        height: calc(100% - var(--padding) * 2);
+        min-width: 200px;
+        box-shadow: inset 0 0 0 10px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+        color: rgba(0, 0, 0, 0.15);
+        font-size: 4rem;
+      }
+
+      .item:nth-of-type(even) {
+        transform: rotateY(45deg) scaleX(var(--scale));
+      }
+
+      .item:nth-of-type(odd) {
+        transform: rotateY(-45deg) scaleX(var(--scale));
+      }
+
+      .item:nth-child(9n + 1) {
+        background: dodgerblue;
+      }
+      .item:nth-child(9n + 2) {
+        background: goldenrod;
+      }
+      .item:nth-child(9n + 3) {
+        background: paleturquoise;
+      }
+      .item:nth-child(9n + 4) {
+        background: gold;
+      }
+      .item:nth-child(9n + 5) {
+        background: cadetblue;
+      }
+      .item:nth-child(9n + 6) {
+        background: tomato;
+      }
+      .item:nth-child(9n + 7) {
+        background: lightcoral;
+      }
+      .item:nth-child(9n + 8) {
+        background: darkslateblue;
+      }
+      .item:nth-child(9n + 9) {
+        background: rebeccapurple;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="items">
+      <div class="item item1">01</div>
+      <div class="item item2">02</div>
+      <div class="item item3">03</div>
+      <div class="item item4">04</div>
+      <div class="item item5">05</div>
+      <div class="item item6">06</div>
+      <div class="item item7">07</div>
+      <div class="item item8">08</div>
+      <div class="item item9">09</div>
+      <div class="item item10">10</div>
+      <div class="item item11">11</div>
+      <div class="item item12">12</div>
+      <div class="item item13">13</div>
+      <div class="item item14">14</div>
+      <div class="item item15">15</div>
+      <div class="item item16">16</div>
+      <div class="item item17">17</div>
+      <div class="item item18">18</div>
+      <div class="item item19">19</div>
+      <div class="item item20">20</div>
+      <div class="item item21">21</div>
+      <div class="item item22">22</div>
+      <div class="item item23">23</div>
+      <div class="item item24">24</div>
+      <div class="item item25">25</div>
+    </div>
+    <script>
+      let startX = 0;
+      let scrollLeft = 0;
+      let dragging = false;
+
+      const items = document.querySelector(".items");
+
+      items.addEventListener("mousedown", (e) => {
+        dragging = true;
+        e.currentTarget.classList.add("active");
+        startX = e.pageX - items.offsetLeft;
+        scrollLeft = items.scrollLeft;
+      });
+
+      items.addEventListener("mouseup", (e) => {
+        dragging = false;
+        e.currentTarget.classList.remove("active");
+      });
+
+      items.addEventListener("mouseleave", (e) => {
+        dragging = false;
+        e.currentTarget.classList.remove("active");
+      });
+
+      items.addEventListener("mousemove", (e) => {
+        if (!dragging) return;
+        const x = e.pageX - items.offsetLeft;
+        const walk = startX - x;
+        items.scrollLeft = scrollLeft + walk;
+      });
+    </script>
+  </body>
+</html>
