@@ -26,3 +26,4 @@
 24. [Sticky Nav](https://vais.github.io/JavaScript30/24 - Sticky Nav/index.html)
 25. [Event Capture, Propagation, Bubbling and Once](https://vais.github.io/JavaScript30/25 - Event Capture, Propagation, Bubbling and Once/index.html)
 27. [Click and Drag](https://vais.github.io/JavaScript30/27 - Click and Drag/index.html)
+28. [Video Speed Controller](https://vais.github.io/JavaScript30/28 - Video Speed Controller/index.html)
