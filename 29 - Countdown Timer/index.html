@@ -1,29 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Countdown Timer</title>
-  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="timer">
-    <div class="timer__controls">
-      <button data-time="20" class="timer__button">20 Secs</button>
-      <button data-time="300" class="timer__button">Work 5</button>
-      <button data-time="900" class="timer__button">Quick 15</button>
-      <button data-time="1200" class="timer__button">Snack 20</button>
-      <button data-time="3600" class="timer__button">Lunch Break</button>
-      <form name="customForm" id="custom">
-        <input type="text" name="minutes" placeholder="Enter Minutes">
-      </form>
-    </div>
-    <div class="display">
-      <h1 class="display__time-left"></h1>
-      <p class="display__end-time"></p>
-    </div>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inconsolata"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(
+          45deg,
+          #42a5f5 0%,
+          #478ed1 50%,
+          #0d47a1 100%
+        );
+        font-family: "Inconsolata", monospace;
+        color: white;
+      }
+      header {
+        display: flex;
+        min-width: 400px;
+      }
+      header > button {
+        flex: 1;
+        font-family: inherit;
+        font-weight: normal;
+        color: white;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-color: rgba(0, 0, 0, 0.2);
+        border-width: 0 1px 3px 0;
+        padding: 10px;
+        cursor: pointer;
+      }
+      header > button:active {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      header > input {
+        padding: 20px;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        margin: 0;
+        font-size: 12.5rem;
+        font-weight: normal;
+        text-shadow: 4px 4px 0 rgb(0 0 0 / 5%);
+      }
+      h2 {
+        font-size: 2.5rem;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <button data-seconds="20">20 secs</button>
+      <button data-seconds="300">work 5</button>
+      <button data-seconds="900">quick 15</button>
+      <button data-seconds="1200">snack 20</button>
+      <button data-seconds="3600">lunch break</button>
+      <input type="text" placeholder="Enter Minutes" />
+    </header>
+    <main>
+      <h1>0:00</h1>
+      <h2>&nbsp;</h2>
+    </main>
+    <script>
+      let interval;
 
-  <script src="scripts-START.js"></script>
-</body>
+      const h1 = document.querySelector("h1");
+      const h2 = document.querySelector("h2");
+      const buttons = document.querySelectorAll("button[data-seconds]");
+      const input = document.querySelector('input[type="text"]');
+
+      const zeroPad = (n) => `${n < 10 ? "0" : ""}${n}`;
+
+      const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        return `${minutes}:${zeroPad(seconds % 60)}`;
+      };
+
+      const startTimer = (seconds) => {
+        clearInterval(interval);
+
+        const endDate = new Date(Date.now() + seconds * 1000);
+
+        h1.textContent = formatTime(seconds);
+        h2.textContent = `Be back at ${[
+          zeroPad(endDate.getHours()),
+          zeroPad(endDate.getMinutes()),
+          zeroPad(endDate.getSeconds()),
+        ].join(":")}`;
+
+        interval = setInterval(() => {
+          const seconds = Math.round((endDate.getTime() - Date.now()) / 1000);
+          if (seconds > 0) {
+            h1.textContent = formatTime(seconds);
+          } else {
+            clearInterval(interval);
+            h1.textContent = formatTime(0);
+          }
+        }, 1000);
+      };
+
+      input.addEventListener("change", (e) => {
+        const minutes = parseFloat(e.currentTarget.value);
+        if (minutes > 0) {
+          startTimer(Math.round(minutes * 60));
+          e.currentTarget.value = null;
+        }
+      });
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          startTimer(parseInt(e.currentTarget.dataset.seconds, 10));
+        });
+      });
+    </script>
+  </body>
 </html>

@@ -25,5 +25,7 @@
 23. [Speech Synthesis](https://vais.github.io/JavaScript30/23 - Speech Synthesis/index.html)
 24. [Sticky Nav](https://vais.github.io/JavaScript30/24 - Sticky Nav/index.html)
 25. [Event Capture, Propagation, Bubbling and Once](https://vais.github.io/JavaScript30/25 - Event Capture, Propagation, Bubbling and Once/index.html)
+26. [Stripe Follow Along Nav](https://vais.github.io/JavaScript30/26 - Stripe Follow Along Nav/index.html)
 27. [Click and Drag](https://vais.github.io/JavaScript30/27 - Click and Drag/index.html)
 28. [Video Speed Controller](https://vais.github.io/JavaScript30/28 - Video Speed Controller/index.html)
+29. [Countdown Timer](https://vais.github.io/JavaScript30/29 - Countdown Timer/index.html)
