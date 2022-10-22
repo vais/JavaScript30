@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <title></title>
+  </head>
+  <style>
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Amatic SC", cursive;
+      background-color: rgb(255, 198, 0);
+    }
+
+    #header {
+      font-size: 5rem;
+      text-align: center;
+    }
+
+    #scoreCard {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 100vh;
+      margin: auto;
+      margin-top: 20px;
+      filter: blur(50px);
+      transition: all 500ms;
+    }
+
+    #board.playing {
+      filter: blur(0);
+    }
+
+    .hole {
+      aspect-ratio: 1/1;
+      position: relative;
+      overflow-y: clip;
+    }
+
+    .hole:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateY(50%);
+      background: url(dirt.svg) center center no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    .mole {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateY(100%);
+      background: url(mole.svg) bottom center no-repeat;
+      background-size: 60%;
+      transition: all 200ms;
+    }
+
+    .peeking {
+      transform: translateY(5%);
+    }
+
+    #playButton {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      padding: 0;
+      border-radius: 100%;
+      color: white;
+      background-color: rgba(255, 0, 0, 0.7);
+      font-weight: bold;
+      font-family: inherit;
+      font-size: 4rem;
+      border: 0;
+      text-shadow: 1px 1px black;
+      white-space: nowrap;
+      transition: all 500ms;
+    }
+
+    #playButton.playing {
+      transform: translate(-50%, -50%) scale(2);
+      pointer-events: none;
+      opacity: 0;
+    }
+  </style>
+
+  <body>
+    <div id="header">whack-a-mole</div>
+    <div id="scoreCard"></div>
+
+    <div id="board" class="blurry">
+      <div class="hole"><div class="mole"></div></div>
+      <div class="hole"><div class="mole"></div></div>
+      <div class="hole"><div class="mole"></div></div>
+      <div class="hole"><div class="mole"></div></div>
+      <div class="hole"><div class="mole"></div></div>
+      <div class="hole"><div class="mole"></div></div>
+    </div>
+
+    <button id="playButton">Start the Game!</button>
+
+    <script>
+      const board = document.querySelector("#board");
+      const scoreCard = document.querySelector("#scoreCard");
+      const playButton = document.querySelector("#playButton");
+      const moles = document.querySelectorAll(".mole");
+
+      let score = 0;
+      let playing = false;
+
+      const rand = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+      const randomMole = () => {
+        return moles.item(rand(0, moles.length));
+      };
+
+      const play = () => {
+        const mole = randomMole();
+        mole.classList.add("peeking");
+
+        setTimeout(() => {
+          mole.classList.remove("peeking");
+
+          if (playing) {
+            setTimeout(play, rand(1000, 3000));
+          } else {
+            playButton.textContent = "Play Again!";
+            playButton.classList.remove("playing");
+            board.classList.remove("playing");
+          }
+        }, rand(500, 1500));
+      };
+
+      const updateScoreCard = () => {
+        scoreCard.textContent = `your score: ${score}`;
+      };
+
+      playButton.addEventListener("click", () => {
+        if (playing) {
+          return;
+        }
+
+        score = 0;
+        playing = true;
+
+        playButton.classList.add("playing");
+        board.classList.add("playing");
+        updateScoreCard();
+
+        setTimeout(play, rand(1000, 3000));
+
+        setTimeout(() => {
+          playing = false;
+        }, 15000);
+      });
+
+      moles.forEach((mole) =>
+        mole.addEventListener("click", () => {
+          score += 1;
+          updateScoreCard();
+          mole.classList.remove("peeking");
+        })
+      );
+
+      updateScoreCard();
+    </script>
+  </body>
+</html>

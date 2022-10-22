@@ -29,3 +29,4 @@
 27. [Click and Drag](https://vais.github.io/JavaScript30/27 - Click and Drag/index.html)
 28. [Video Speed Controller](https://vais.github.io/JavaScript30/28 - Video Speed Controller/index.html)
 29. [Countdown Timer](https://vais.github.io/JavaScript30/29 - Countdown Timer/index.html)
+30. [Whack A Mole](https://vais.github.io/JavaScript30/30 - Whack A Mole/index.html)
